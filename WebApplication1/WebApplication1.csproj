@@ -12,4 +12,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LabWebApi.contracts\LabWebApi.contracts.csproj" />
+    <ProjectReference Include="..\LabWevAPI.Database\LabWevAPI.Database.csproj" />
+  </ItemGroup>
+
 </Project>

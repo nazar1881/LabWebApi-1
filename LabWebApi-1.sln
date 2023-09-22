@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{C86AB847-1B87-4B69-A434-C18EB7F67F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{C86AB847-1B87-4B69-A434-C18EB7F67F5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A54266A0-F170-4FA5-9902-2FA18A3DADBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabWebApi.contracts", "LabWebApi.contracts\LabWebApi.contracts.csproj", "{0D4B81D4-AB48-400D-99A0-BA835D583177}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{57870B12-56C5-41BE-83BB-927FD02DFDA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabWevAPI.Database", "LabWevAPI.Database\LabWevAPI.Database.csproj", "{171B60D7-48BA-4CEE-BCD1-4E60EE1498AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,21 @@ Global
 		{C86AB847-1B87-4B69-A434-C18EB7F67F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C86AB847-1B87-4B69-A434-C18EB7F67F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C86AB847-1B87-4B69-A434-C18EB7F67F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D4B81D4-AB48-400D-99A0-BA835D583177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D4B81D4-AB48-400D-99A0-BA835D583177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D4B81D4-AB48-400D-99A0-BA835D583177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D4B81D4-AB48-400D-99A0-BA835D583177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{171B60D7-48BA-4CEE-BCD1-4E60EE1498AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{171B60D7-48BA-4CEE-BCD1-4E60EE1498AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{171B60D7-48BA-4CEE-BCD1-4E60EE1498AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{171B60D7-48BA-4CEE-BCD1-4E60EE1498AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0D4B81D4-AB48-400D-99A0-BA835D583177} = {A54266A0-F170-4FA5-9902-2FA18A3DADBA}
+		{171B60D7-48BA-4CEE-BCD1-4E60EE1498AB} = {57870B12-56C5-41BE-83BB-927FD02DFDA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1666B1D6-85AA-47C9-B1DA-1514782B8C3E}
