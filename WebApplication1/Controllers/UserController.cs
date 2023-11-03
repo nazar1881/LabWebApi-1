@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using LabWebApi.contracts.Data.Entities;
 using LabWebApi.contracts.Data;
+using LabWebAPI.Contracts.Data.Entities;
 
 namespace LabWebApi.Web.Controllers
 {

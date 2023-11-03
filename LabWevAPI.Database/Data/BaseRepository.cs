@@ -5,15 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using LabWebAPI.Database.Data;
+using System.Linq.Expressions;
 
 namespace LabWevAPI.Database.Data
 {
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity :
 class, IBaseEntity
     {
-        protected readonly LabWebApiDbContext _dbContext;
+        protected readonly LabWebApiDbsContext _dbContext;
         protected readonly DbSet<TEntity> _dbSet;
-        public BaseRepository(LabWebApiDbContext dbContext)
+        public BaseRepository(LabWebApiDbsContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
@@ -44,6 +46,14 @@ class, IBaseEntity
         {
             await Task.Run(() => _dbContext.Entry(entity).State =
             EntityState.Modified);
+        }
+
+        public IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = includes
+            .Aggregate<Expression<Func<TEntity, object>>,
+            IQueryable<TEntity>>(_dbSet, (current, include) => current.Include(include));
+            return query;
         }
     }
 }

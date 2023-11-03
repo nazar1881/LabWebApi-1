@@ -1,18 +1,13 @@
 ﻿using LabWebApi.contracts.Data.Entities;
-using LabWevAPI.Database.Data.Configurations;
+using LabWebAPI.Contracts.Data.Entities;
+using LabWebAPI.Database.Data.Configurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LabWevAPI.Database.Data
+namespace LabWebAPI.Database.Data
 {
-    public class LabWebApiDbContext : DbContext
+    public class LabWebApiDbsContext : IdentityDbContext<User>
     {
-        public LabWebApiDbContext(DbContextOptions<LabWebApiDbContext> options) :
-        base(options)
+        public LabWebApiDbsContext(DbContextOptions<LabWebApiDbsContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
@@ -21,6 +16,8 @@ namespace LabWevAPI.Database.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
-        public DbSet<User> Users { get; set; }
+        public override DbSet<User> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
     }
 }
