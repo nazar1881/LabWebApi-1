@@ -1,7 +1,8 @@
-﻿using LabWebAPI.Contracts.Data.Entities;
+﻿using LabWebApi.contracts.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace LabWebAPI.Database.Data.Configurations
+
+namespace LabWevAPI.Database.Data.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

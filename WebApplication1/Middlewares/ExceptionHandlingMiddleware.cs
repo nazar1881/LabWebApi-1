@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using LabWebApi.contracts.Exceptions;
+using System.Text.Json;
 namespace LabWebApi.Web.Middlewares
 {
     public class ExceptionHandlingMiddleware

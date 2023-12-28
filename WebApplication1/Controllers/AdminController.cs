@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using LabWebApi.contracts.DTO.AdminPanel;
+using LabWebApi.contracts.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [Authorize(Roles = "Admin")]
@@ -6,14 +8,35 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]
 public class AdminController : ControllerBase
 {
-    public AdminController()
-    {
 
-    }
-    [HttpGet]
-    public async Task<IActionResult> Admin()
+    private readonly IAdminService _adminService;
+    public AdminController(IAdminService adminService)
     {
-        string result = "It's Admin";
+        _adminService = adminService;
+    }
+    [HttpGet("users")]
+    public async Task<IActionResult> GetUsers()
+    {
+        Console.WriteLine("jenoregoengor");
+        var result = await _adminService.GetUsersAsync();
         return Ok(result);
+    }
+    [HttpGet("users/{id}")]
+    public async Task<IActionResult> GetUserById(string id)
+    {
+        var result = await _adminService.GetUserByIdAsync(id);
+        return Ok(result);
+    }
+    [HttpPut("users")]
+    public async Task<IActionResult> EditUser([FromBody] UserInfoDTO model)
+    {
+        var result = await _adminService.EditUserAsync(model);
+        return Ok(result);
+    }
+    [HttpDelete("users/{id}")]
+    public async Task<IActionResult> DeleteUser(string id)
+    {
+        await _adminService.DeleteUserAsync(id);
+        return Ok();
     }
 }

@@ -1,4 +1,4 @@
-﻿using LabWebAPI.Contracts.Data.Entities;
+﻿using LabWebApi.contracts.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

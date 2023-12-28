@@ -1,7 +1,8 @@
 ﻿using LabWebApi.contracts.Roles;
-using LabWebAPI.Contracts.Data.Entities;
+using LabWebApi.contracts.Data.Entities;
 using Microsoft.AspNetCore.Identity;
-namespace LabWebAPI.Database.Data.Seeding
+
+namespace LabWevAPI.Database.Seeding
 {
     public static class SeedingRoles
     {

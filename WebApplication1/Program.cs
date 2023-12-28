@@ -15,6 +15,7 @@ builder.Services.AddCustomServices();
 //Configure JWT
 builder.Services.ConfigJwtOptions(builder.Configuration.GetSection("JwtOptions"));
 builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.ConfigureImageSettings(builder.Configuration);
 builder.Services.AddSpaStaticFiles(configuration =>
 {
     configuration.RootPath = "ClientApp/dist";

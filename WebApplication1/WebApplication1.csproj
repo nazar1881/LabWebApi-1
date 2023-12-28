@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LabWebApi.contracts\LabWebApi.contracts.csproj" />
+    <ProjectReference Include="..\LabWebApi.Services\LabWebApi.Services.csproj" />
     <ProjectReference Include="..\LabWevAPI.Database\LabWevAPI.Database.csproj" />
-    <ProjectReference Include="..\LavWevApi.Services\LavWevApi.Services.csproj" />
   </ItemGroup>
 
 </Project>

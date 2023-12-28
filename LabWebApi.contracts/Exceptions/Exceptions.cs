@@ -1,4 +1,4 @@
-﻿public class BadRequestException : Exception
+﻿/*public class BadRequestException : Exception
 {
     public BadRequestException(string message) : base(message) { }
 }
@@ -28,3 +28,4 @@ public class UserAlreadyExistsException : BadRequestException
 {
     public UserAlreadyExistsException(string value) : base($"User with this {value} was already exists!") { }
 }
+*/

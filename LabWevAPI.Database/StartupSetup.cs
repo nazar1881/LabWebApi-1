@@ -1,5 +1,5 @@
 ﻿using LabWebApi.contracts.Data;
-using LabWebAPI.Contracts.Data.Entities;
+using LabWebApi.contracts.Data.Entities;
 using LabWebAPI.Database.Data;
 using LabWevAPI.Database.Data;
 using Microsoft.AspNetCore.Identity;
@@ -15,9 +15,9 @@ namespace LabWevAPI.Database
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
         }
         public static void AddDbContext(this IServiceCollection services, string
-        connectionString)
+       connectionString)
         {
-            services.AddDbContext<LabWebApiDbsContext>(x =>
+            services.AddDbContext<LabWebApiDbContext>(x =>
             x.UseSqlServer(connectionString));
         }
 
@@ -25,7 +25,7 @@ namespace LabWevAPI.Database
         {
             services.AddIdentity<User,
             IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<LabWebApiDbsContext>()
+            .AddEntityFrameworkStores<LabWebApiDbContext>()
             .AddDefaultTokenProviders();
         }
     }

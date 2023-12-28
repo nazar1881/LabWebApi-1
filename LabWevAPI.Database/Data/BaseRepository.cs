@@ -11,14 +11,19 @@ using System.Linq.Expressions;
 namespace LabWevAPI.Database.Data
 {
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity :
-class, IBaseEntity
+   class, IBaseEntity
     {
-        protected readonly LabWebApiDbsContext _dbContext;
+        protected readonly LabWebApiDbContext _dbContext;
         protected readonly DbSet<TEntity> _dbSet;
-        public BaseRepository(LabWebApiDbsContext dbContext)
+        public BaseRepository(LabWebApiDbContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
+        }
+        public void DeleteWhere(Expression<Func<TEntity, bool>> condition)
+        {
+            var entitiesToDelete = _dbSet.Where(condition);
+            _dbSet.RemoveRange(entitiesToDelete);
         }
         public async Task<TEntity> AddAsync(TEntity entity)
         {
@@ -29,7 +34,6 @@ class, IBaseEntity
             _dbSet.Remove(entity);
             await Task.CompletedTask;
         }
-
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
@@ -45,15 +49,22 @@ class, IBaseEntity
         public async Task UpdateAsync(TEntity entity)
         {
             await Task.Run(() => _dbContext.Entry(entity).State =
-            EntityState.Modified);
+           EntityState.Modified);
+        }
+
+        public async Task<TEntity> GetByIdAsync(int id)
+        {
+            return await _dbSet.FindAsync(id);
         }
 
         public IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] includes)
         {
             var query = includes
-            .Aggregate<Expression<Func<TEntity, object>>,
-            IQueryable<TEntity>>(_dbSet, (current, include) => current.Include(include));
+                .Aggregate<Expression<Func<TEntity, object>>,
+                IQueryable<TEntity>>(_dbSet, (current, include) => current.Include(include));
+
             return query;
         }
+
     }
 }

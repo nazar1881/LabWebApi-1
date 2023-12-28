@@ -2,15 +2,17 @@
 using LabWebApi.contracts.Helpers;
 using LabWebApi.contracts.Services;
 using LabWebApi.Web.Middlewares;
-using LabWebAPI.Contracts.Data.Entities;
-using LabWebAPI.Database.Data.Seeding;
-using LabWebAPI.Services.Mapper;
-using LabWebAPI.Services.Services;
+using LabWebApi.contracts.Data.Entities;
+using LabWevApi.Services.Mapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using LabWevApi.Services.Services;
+using LabWevAPI.Database.Seeding;
+using LavWevApi.Services.Services;
+using LabWebApi.Services.Services;
 
 namespace LabWebApi.Web.Extensions
 {
@@ -85,6 +87,12 @@ namespace LabWebApi.Web.Extensions
         {
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ILocaleStorageService, LocaleStorageService>();
+            services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICommentService, CommentService>();
         }
 
         public static void ConfigJwtOptions(this IServiceCollection services, IConfiguration config)
@@ -124,6 +132,12 @@ namespace LabWebApi.Web.Extensions
                     }
                 };
             });
+        }
+
+        public static void ConfigureImageSettings(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<ImageSettings>(configuration.GetSection("ImageSettings"));
+
         }
 
     }
